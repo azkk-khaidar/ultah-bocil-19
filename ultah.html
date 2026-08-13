@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Rahasia Sang XVII ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libertinus+Math&display=swap" rel="stylesheet">
+
+  <style>
+    /* ====================================
+       1. GLOBAL & THEME STYLES
+       ==================================== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      .libertinus-math-regular {
+  font-family: "Libertinus Math", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+    }
+
+    body {
+      background: linear-gradient(135deg, #ffe6eb 0%, #def3f8 100%);
+      color: #4a4a4a;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* Floating Music Equalizer Container (Theme: Red Gradient) */
+    .music-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(8px);
+      padding: 6px 16px 6px 6px;
+      border-radius: 40px;
+      box-shadow: 0 4px 15px rgba(255, 71, 87, 0.25);
+      border: 1px solid rgba(255, 71, 87, 0.2);
+    }
+
+    .music-btn {
+      width: 45px;
+      height: 45px;
+      background: linear-gradient(135deg, #ff4757 0%, #ff6b81 100%);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      transition: transform 0.3s ease;
+      box-shadow: 0 3px 10px rgba(255, 71, 87, 0.3);
+    }
+
+    .music-btn:hover {
+      transform: scale(1.08);
+    }
+
+    .music-text {
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: #ff4757;
+      user-select: none;
+      letter-spacing: 0.5px;
+    }
+
+    /* Equalizer Bars Inside Button */
+    .eq-bar {
+      width: 3px;
+      height: 14px;
+      background-color: #ffffff;
+      border-radius: 2px;
+      transition: height 0.2s ease;
+    }
+
+    /* Equalizer Playing Animation */
+    .music-btn.playing .bar-1 { animation: equalize 0.8s infinite ease-in-out alternate; }
+    .music-btn.playing .bar-2 { animation: equalize 0.6s infinite ease-in-out alternate 0.2s; }
+    .music-btn.playing .bar-3 { animation: equalize 0.9s infinite ease-in-out alternate 0.1s; }
+    .music-btn.playing .bar-4 { animation: equalize 0.7s infinite ease-in-out alternate 0.3s; }
+
+    @keyframes equalize {
+      0% { height: 5px; }
+      100% { height: 20px; }
+    }
+
+    /* Portal Overlay Pages */
+    .portal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: url(Picture/portal\ web.png); /* ganti dengan nama/URL gambar kamu */
+  background-size: cover;       /* Agar gambar memenuhi seluruh layar */
+  background-position: center;  /* Posisi gambar di tengah */
+  background-repeat: no-repeat; /* Gambar tidak mengulang */
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      text-align: center;
+      padding: 20px;
+      transition: opacity 0.5s ease;
+    }
+
+    .portal-btn {
+      background: #ff4757;
+      color: white;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 25px;
+      box-shadow: 0 5px 20px rgba(255, 71, 87, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .portal-btn:hover {
+      transform: scale(1.08);
+      background: #ff6b81;
+    }
+
+    /* Keypad PIN Screen */
+    .pin-display {
+      font-size: 2rem;
+      letter-spacing: 12px;
+      margin: 20px 0 10px 0;
+      min-height: 45px;
+      color: #ffa502;
+      font-weight: bold;
+    }
+
+    .pin-error {
+      color: #ff4757;
+      font-size: 0.95rem;
+      min-height: 25px;
+      margin-bottom: 15px;
+    }
+
+    .keypad-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      max-width: 260px;
+      width: 100%;
+    }
+
+    .key-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      font-size: 1.4rem;
+      font-weight: bold;
+      padding: 15px;
+      border-radius: 50%;
+      width: 65px;
+      height: 65px;
+      margin: 0 auto;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .key-btn:active {
+      background: #ff4757;
+      transform: scale(0.95);
+    }
+
+    /* ====================================
+       2. ANIMASI MERPATI PUTIH FULL SCREEN
+       ==================================== */
+    #doveTransition {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 3000;
+      pointer-events: none;
+      display: none;
+      overflow: hidden;
+    }
+
+    .white-screen-cover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #ffffff;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+      z-index: 2999;
+    }
+
+    .dove {
+      position: absolute;
+      bottom: -150px;
+      font-size: 3.2rem;
+      user-select: none;
+      animation: flyUpAndScale 2.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+      z-index: 3001;
+      filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
+    }
+
+    @keyframes flyUpAndScale {
+      0% {
+        transform: translateY(0) scale(0.5) rotate(0deg);
+        opacity: 0;
+      }
+      15% { opacity: 1; }
+      85% { opacity: 1; }
+      100% {
+        transform: translateY(-120vh) scale(4) rotate(-15deg);
+        opacity: 1;
+      }
+    }
+
+    /* Container Utama Website */
+    #mainContent {
+      display: none;
+    }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    h1, h2 {
+      color: #ff4757;
+      margin-bottom: 15px;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      
+  /* Memanggil gambar background baru */
+  background-image: url(Picture/Gemini_Generated_Image_vtc2lovtc2lovtc2.png);
+  background-size: cover;       /* Memastikan gambar selalu memenuhi area hero */
+  background-position: center;  /* Menjaga fokus gambar tetap di tengah */
+  background-repeat: no-repeat;
+  /* Efek kartu transparan putih agar teks semakin menonjol */
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(4px);
+}
+      
+    
+
+    .hero h1 { font-size: 2.8rem; }
+
+    .scroll-down-hint {
+      margin-top: 30px;
+      font-size: 0.9rem;
+      color: #888;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-10px); }
+      60% { transform: translateY(-5deg); }
+    }
+/* PHOTO GALLERY SECTION */
+#gallery {
+  width: 100vw;                 /* Memaksa background selebar 100% layar HP/Laptop */
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  
+  /* GAMBAR BACKGROUND PERMEN KAMU */
+  background-image: url(Picture/Gemini_Generated_Image_vtc2lovtc2lovtc2.png); /* Ganti dengan nama file gambar permen kamu */
+  background-size: cover;                  /* Gambar otomatis memenuhi SELURUH area latar */
+  background-position: center center;      /* Posisikan di tengah-tengah */
+  background-repeat: no-repeat;            /* Mencegah gambar terulang */
+  
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Memastikan wadah foto tetap rapi di tengah background */
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1100px;
+  margin-top: 30px;
+}
+
+    .photo-card {
+      background: white;
+      padding: 15px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .photo-card:hover {
+      transform: translateY(-8px) rotate(1deg);
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .photo-card p {
+      margin-top: 10px;
+      font-style: italic;
+      color: #777;
+    }
+
+    /* GAME SECTION */
+    .game-section {
+      background-image: url(Picture/mario.jpg);
+      background-size: cover;                  /* Gambar otomatis memenuhi SELURUH area latar */
+  background-position: center center;      /* Posisikan di tengah-tengah */
+  background-repeat: no-repeat;
+      color: white;
+      width: 100%;
+      padding-bottom: 80px; /* Space tambahan di bagian bawah game */
+    }
+
+    .game-section h2 { color: #ff6b81; }
+
+    .game-container-viewport {
+      width: 100%;
+      max-width: 800px;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      position: relative;
+      margin-top: 20px;
+    }
+
+    #gameCanvas {
+      background: #70a1ff;
+      display: block;
+    }
+
+    .level-badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: rgba(0,0,0,0.75);
+      color: #ffa502;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 0.95rem;
+      border: 1px solid #ffa502;
+      z-index: 5;
+    }
+
+    .respawn-msg {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 71, 87, 0.95);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      display: none;
+      z-index: 15;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+    }
+
+    .dialogue-box {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 85%;
+      background: rgba(0, 0, 0, 0.95);
+      border: 2px solid #ff4757;
+      border-radius: 10px;
+      padding: 15px;
+      color: white;
+      text-align: left;
+      display: none;
+      z-index: 10;
+    }
+
+    .dialogue-box h4 {
+      color: #ffa502;
+      margin-bottom: 5px;
+    }
+
+    .dialogue-btn {
+      background: #ff4757;
+      border: none;
+      color: white;
+      padding: 6px 16px;
+      border-radius: 5px;
+      margin-top: 10px;
+      cursor: pointer;
+      float: right;
+      font-weight: bold;
+    }
+
+    /* ====================================
+       TRANSISI GELOMBANG MORPH / DIVIDER
+       ==================================== */
+    .morph-divider {
+      display: none;
+      width: 100%;
+      background: #2f3542;
+      margin-top: 0px;
+      line-height: 0;
+    }
+
+    .morph-divider svg {
+      width: 100%;
+      height: 100px;
+    }
+
+    /* ====================================
+       3. ENDING SECTION & BALLOON ANIMATION
+       ==================================== */
+    .ending-section {
+      display: none;
+      background-image: url(Picture/estetic\ pink.jpg);
+      background-size: cover;                  /* Gambar otomatis memenuhi SELURUH area latar */
+  background-position: center center;      /* Posisikan di tengah-tengah */
+  background-repeat: no-repeat;
+      overflow: hidden;
+      position: relative;
+      padding: 120px 20px 80px 20px; /* Space atas lebih tinggi agar lega */
+      margin-top: 0;
+      clip-path: circle(0% at 50% 0%);
+      transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+      
+    }
+
+    /* Kelas animasi morph yang dipanggil JS */
+    .ending-section.morphed {
+      clip-path: circle(150% at 50% 0%);
+    }
+
+    /* Continuous Balloon Animation Container */
+    #balloonContainer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .balloon {
+      position: absolute;
+      bottom: -100px;
+      width: 45px;
+      height: 55px;
+      border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+      animation: floatUp 7s linear infinite;
+      opacity: 0.85;
+    }
+
+    .balloon::after {
+      content: "";
+      position: absolute;
+      bottom: -12px;
+      left: 21px;
+      width: 2px;
+      height: 14px;
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.85;
+      }
+      100% {
+        transform: translateY(-120vh) rotate(20deg);
+        opacity: 0;
+      }
+    }
+
+    .ending-content {
+      position: relative;
+      z-index: 2;
+      max-width: 750px;
+      width: 100%;
+    }
+
+    .karate-belt {
+      background: #111;
+      color: #fff;
+      padding: 8px 25px;
+      display: inline-block;
+      font-weight: bold;
+      letter-spacing: 2px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      border-right: 15px solid #ff4757;
+    }
+
+    .letter-box {
+      background: #fff0f3;
+      border: 3px dashed #ff4757;
+      border-radius: 20px;
+      padding: 40px 35px;
+      box-shadow: 0 10px 30px rgba(255, 71, 87, 0.15);
+      text-align: left;
+      line-height: 1.8;
+      position: relative;
+      z-index: 5;
+    }
+
+    /* BULETAN FOTO RANDOM DI SEKELILING KARTU */
+    .circle-photo-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .circle-photo {
+      position: absolute;
+      width: 75px;
+      height: 75px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #ff4757;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+      pointer-events: auto;
+      transition: transform 0.3s ease;
+      background: #ffffff;
+    }
+
+    .circle-photo:hover {
+      transform: scale(1.25) rotate(5deg);
+      z-index: 10;
+    }
+
+    .cp-1  { top: -45px; left: -25px; width: 85px; height: 85px; }
+    .cp-4  { top: -45px; right: -25px; }
+    .cp-5  { top: 20%; left: -65px; width: 80px; height: 80px; }
+    .cp-6  { top: 20%; right: -65px; }
+    .cp-7  { top: 50%; left: -75px; width: 90px; height: 90px; }
+    .cp-8  { top: 50%; right: -75px; width: 85px; height: 85px; }
+    .cp-9  { top: 78%; left: -60px; }
+    .cp-10 { top: 78%; right: -60px; width: 80px; height: 80px; }
+    .cp-11 { bottom: -45px; left: -20px; width: 85px; height: 85px; }
+    .cp-12 { bottom: -55px; left: 30%; }
+    .cp-13 { bottom: -55px; right: 30%; width: 90px; height: 90px; }
+    .cp-14 { bottom: -45px; right: -20px; }
+
+    /* ====================================
+       4. CUSTOM FOOTER (THEME: RED ACCENT)
+       ==================================== */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #ffffff;
+      color: #666666;
+      font-size: 0.95rem;
+      border-top: 1px solid #ffe6eb;
+    }
+
+    footer .brand-highlight {
+      color: #ff4757;
+      font-weight: bold;
+    }
+
+    footer .year-highlight {
+      color: #ff4757;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      .circle-photo { width: 55px !important; height: 55px !important; }
+      .cp-1  { top: -30px; left: -10px; }
+      .cp-4  { top: -30px; right: -10px; }
+      .cp-5  { left: -25px; }
+      .cp-6  { right: -25px; }
+      .cp-7  { left: -30px; }
+      .cp-8  { right: -30px; }
+      .cp-9  { left: -25px; }
+      .cp-10 { right: -25px; }
+      .cp-11 { bottom: -30px; left: -10px; }
+      .cp-14 { bottom: -30px; right: -10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Audio Element -->
+  <audio id="bgMusic" loop>
+    <source src="Audio/Sempurna ( TikTok Full Version ) [7SSISCNlDoU].mp3" type="audio/mp3">
+  </audio>
+
+  <!-- Equalizer Music Button + Teks Indikator -->
+  <div class="music-container" id="musicBtn">
+    <button class="music-btn" id="musicBtnInner" onclick="toggleMusic()" title="Play / Pause Music">
+      <div class="eq-bar bar-1"></div>
+      <div class="eq-bar bar-2"></div>
+      <div class="eq-bar bar-3"></div>
+      <div class="eq-bar bar-4"></div>
+    </button>
+    <span class="music-text" id="musicStatusText">Play Music</span>
+  </div>
+
+  <!-- PORTAL OVERLAY 1: WELCOME SCREEN -->
+  <div class="portal-overlay" id="welcomePortal">
+    <h1 style="font-size: 2.2rem; color: #030303; margin-bottom: 10px;">- Welcome To -</h1>
+    <p style="font-size: 1.2rem; color: #ff0026; font-weight: bold;">PORTAL RAHASIA SANG XVII ✨</p>
+    <button class="portal-btn" onclick="goToPinScreen()">Masuk ▶</button>
+  </div>
+
+  <!-- PORTAL OVERLAY 2: PIN LOCK SCREEN -->
+  <div class="portal-overlay" id="pinPortal" style="display: none;">
+    <h2 style="color: #fa8a00; font-size: 1.5rem;">Masukkan Kode Akses Rahasia 🔐</h2>
+    <div class="pin-display" id="pinDisplay">----</div>
+    <div class="pin-error" id="pinError"></div>
+
+    <div class="keypad-grid">
+      <button class="key-btn" onclick="pressKey('1')">1</button>
+      <button class="key-btn" onclick="pressKey('2')">2</button>
+      <button class="key-btn" onclick="pressKey('3')">3</button>
+      <button class="key-btn" onclick="pressKey('4')">4</button>
+      <button class="key-btn" onclick="pressKey('5')">5</button>
+      <button class="key-btn" onclick="pressKey('6')">6</button>
+      <button class="key-btn" onclick="pressKey('7')">7</button>
+      <button class="key-btn" onclick="pressKey('8')">8</button>
+      <button class="key-btn" onclick="pressKey('9')">9</button>
+      <button class="key-btn" style="background: rgba(255,71,87,0.3);" onclick="clearPin()">C</button>
+      <button class="key-btn" onclick="pressKey('0')">0</button>
+      <button class="key-btn" style="background: rgba(46,213,115,0.3);" onclick="submitPin()">✓</button>
+    </div>
+  </div>
+
+  <!-- CONTAINER MERPATI PUTIH FULL SCREEN -->
+  <div id="doveTransition">
+    <div class="white-screen-cover" id="whiteCover"></div>
+  </div>
+
+  <!-- MAIN WEBSITE CONTENT -->
+  <div id="mainContent">
+
+    <!-- SECTION 1: HERO -->
+    <section class="hero" id="home">
+      <h1>❤️HAPPY BIRTHDAYY, SAYANGGGG!!!! ❤️</h1>
+      <p>Selamat ulang tahun buat The Only One atlet Karate terfavorit dan Paling papa sayangi!!</p>
+      <p class="scroll-down-hint">↓ Scroll ke bawah duluu yukk buat liat hadiah kecil ini, xixixi ↓</p>
+    </section>
+
+    <!-- SECTION 2: GALLERY -->
+    <section id="gallery">
+      <h2>Galeri Senyuman Bocil sekaligus Penyemangat PAPAA📸</h2>
+      <p>Di balik ketangguhan bocill di arena, senyuman bocill pasti akan selalu jadi hal paling hangat dan mahal buat papaa xixixi.</p>
+      
+      <div class="gallery-container">
+        <div class="photo-card">
+          <img src="Picture/Juara.jpg" alt="Foto 1" >
+          <p>"Masih inget sama momen juara ini, sayang??."</p>
+        </div>
+        <div class="photo-card">
+          <img src="Picture/SMP 2.jpg" alt="Foto 2" >
+          <p>"Bocil jaman SMA miawww"</p>
+        </div>
+        <div class="photo-card">
+          <img src="Picture/JUARA 3.jpeg" alt="Foto 3" >
+          <p>"LIATT!!BOCIL MEMBANTAI CEMUA LAWAN BOCILL!!"</p>
+        </div>
+        <div class="photo-card">
+          <img src="Picture/SMA IMUT.jpg" alt="Foto 4" >
+          <p>"Yakali segemeshh ini nda bikin papa salting"</p>
+        </div>
+        <div class="photo-card">
+          <img src="Picture/AWALAN.jpg" alt="Foto 4" >
+          <p>"the origin of bocill xixixi"</p>
+        </div>
+        <div class="photo-card">
+          <img src="Picture/BOBO KACAMATA.jpg" alt="Foto 4" >
+          <p>"BOCILL JAMAN KACAMATAAAA, GEMESHH KANN!!!"</p>
+        </div>
+        <div class="photo-card">
+          <img src="Picture/masker.jpg" alt="Foto 4" >
+          <p>"Pap terimut pada zaman nyaa hehehe"</p>
+        </div>
+        <div class="photo-card">
+          <img src="Picture/Sense.jpg" alt="Foto 4" >
+          <p>"Haikkk, Sense!!!"</p>
+        </div>
+        <div class="photo-card">
+          <img src="Picture/Idul Fitri.jpg" alt="Foto 4" >
+          <p>"PAP IMUT IN THE PINK SUIT"</p>
+        </div>
+        <div class="photo-card">
+          <img src="Picture/SMA.jpg" alt="Foto 4" >
+          <p>"Onii-channn"</p>
+        </div>
+        <div class="photo-card">
+          <img src="Picture/kacamata SMA.jpg" alt="Foto 4" >
+          <p>"Di pap kacamata ciapa nda meleleh xixix"</p>
+        </div>
+        <div class="photo-card">
+          <img src="Picture/PINK 2.jpeg" alt="Foto 4" >
+          <p>"ESTETIK BANGETTT!!! AKKK"</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: MINI GAME -->
+    <section class="game-section" id="game">
+      <h2>Mini Quest: Karate Journey 🎮</h2>
+      <p>Gunakan panah <b>Kiri & Kanan</b> (A/D) untuk jalan, dan <b>Atas/Space</b> (W) untuk lompat!</p>
+      <p style="font-size:0.85rem; color:#ff7675; margin-top:5px;">Selesaikan 4 Level tantangan untuk membuka pesan rahasia di akhir!</p>
+      
+      <div class="game-container-viewport">
+        <div class="level-badge" id="levelBadge">Stage 1 / 4</div>
+        <div class="respawn-msg" id="respawnMsg">Oops! Coba Lagi Yuk 😋</div>
+        
+        <canvas id="gameCanvas" width="800" height="350"></canvas>
+        
+        <div class="dialogue-box" id="dialogueBox">
+          <h4 id="dialogueSpeaker">Insecurity</h4>
+          <p id="dialogueText">Isi Percakapan...</p>
+          <button class="dialogue-btn" id="dialogueBtn" onclick="nextDialogue()">Lanjut ▶</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- MORPHING WAVE DIVIDER ANTARA GAME & ENDING PAGE -->
+    <div class="morph-divider" id="morphDivider">
+      <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path fill="#f8c8dc, #f48fb1" fill-opacity="1" d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,144C672,139,768,181,864,197.3C960,213,1056,203,1152,176C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+      </svg>
+    </div>
+
+    <!-- SECTION 4: ENDING PAGE -->
+    <section class="ending-section" id="ending">
+      <!-- CONTAINER BALON MELAYANG LONTAR KELUAR -->
+      <div id="balloonContainer"></div>
+
+      <div class="ending-content">
+        <div class="karate-belt">BLACK BELT OF MY HEART 🥋❤️</div>
+        <h2>YEAYYY!! Selamat Sayangg! Bocill Menang, nyammm! 🏆</h2>
+
+        <!-- CONTAINER KARTU UCAPAN & FOTO CIRCLE -->
+        <div style="position: relative; width: 100%;">
+          
+          <!-- FOTO BULETAN RANDOM DI SEKELILING KARTU -->
+          <div class="circle-photo-wrapper">
+            <img src="Picture/BUNGA PT 2.jpg" class="circle-photo cp-1" alt="Foto 1">
+            <img src="Picture/IMUT 7.jpeg" class="circle-photo cp-4" alt="Foto 4">
+            <img src="Picture/IMUT 4.jpeg" class="circle-photo cp-5" alt="Foto 5">
+            <img src="Picture/Jalan-jalan.jpg" class="circle-photo cp-6" alt="Foto 6">
+            <img src="Picture/NGINTIP.jpg" class="circle-photo cp-7" alt="Foto 7">
+            <img src="Picture/TOPI SMA.jpg" class="circle-photo cp-8" alt="Foto 8">
+            <img src="Picture/SMP.jpg" class="circle-photo cp-9" alt="Foto 9">
+            <img src="Picture/IMUT 5.jpeg" class="circle-photo cp-10" alt="Foto 10">
+          </div>
+
+          <!-- KARTU UCAPAN UTAMA -->
+          <div class="letter-box">
+            <p>SAYANGGGG, SELAMAT ULANG TAHUN YANG KE 19 YAHHH, CIEE OFFICIAL SWEET NINETEEN xixixi</p>
+            <br>
+            <p>Sebagai seorang atlet dan juga pasangan yang baik, bocil mungkin terbiasa membagi waktu  serta mengalami jatuh bangun meski tanpa papa ketahui sekalipun. Tapi papa mau ngingetin bocil papa yang gemesh ini satu hal penting: <b>jangan pernah merasa minder atau meragukan diri bocil ya sayangg</b>, baik di dalam maupun di luar.</p>
+            <br>
+            <p>Bocil adalah sosok yang menginspirasi papa setiap hari untuk tetap kuat, disiplin, tangguh, dan punya jiwa penyabar yang luar biasa. Ketika bocil merasa lelah atau ragu, ingat yaa kalau ada papaa yang selalu jadi suporter nomor satu bocill yang akan selalu mendukung, membantu, dan mendengarkan bocil meski papa sendieri belum sempurna:> </p>
+            <br>
+            <p>Papa memohon maaf sebesar dan seluasnya jika selama setahun selalu membuat hati bocl sedih dan sepi, Teruslah melangkah dengan bangga dan penuh semnagatt, sayanggg. Selamat bertambah usia, My Future Senorita🥋❤️</p>
+            <br>
+            <p style="text-align: right; font-weight: bold;">Dengan segenap cinta dan kasih sayang,<br>-Papa Miaww-</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- FOOTER REDESIGNED -->
+  <footer>
+    &copy; <span class="brand-highlight">2026 PPA-07</span> <span class="year-highlight">2026</span>. All rights reserved.
+  </footer>
+
+  <script>
+    /* ====================================
+       1. PORTAL & PIN LOCK SYSTEM
+       ==================================== */
+    let inputPin = "";
+    const targetPin = "1708";
+
+    function goToPinScreen() {
+      document.getElementById('welcomePortal').style.display = 'none';
+      document.getElementById('pinPortal').style.display = 'flex';
+    }
+
+    function updatePinDisplay() {
+      const display = document.getElementById('pinDisplay');
+      if (inputPin.length === 0) {
+        display.textContent = "----";
+      } else {
+        display.textContent = "•".repeat(inputPin.length);
+      }
+    }
+
+    function pressKey(num) {
+      if (inputPin.length < 4) {
+        inputPin += num;
+        updatePinDisplay();
+      }
+      if (inputPin.length === 4) {
+        submitPin();
+      }
+    }
+
+    function clearPin() {
+      inputPin = "";
+      document.getElementById('pinError').textContent = "";
+      updatePinDisplay();
+    }
+
+    function submitPin() {
+      if (inputPin === targetPin) {
+        triggerDoveAnimation();
+      } else {
+        document.getElementById('pinError').textContent = "Sandi salah, masa ngga tau sih 😭";
+        inputPin = "";
+        updatePinDisplay();
+      }
+    }
+
+    /* ====================================
+       2. TRANSISI MERPATI PUTIH
+       ==================================== */
+    function triggerDoveAnimation() {
+      const doveContainer = document.getElementById('doveTransition');
+      const whiteCover = document.getElementById('whiteCover');
+      doveContainer.style.display = 'block';
+
+      const totalDoves = 120;
+      for (let i = 0; i < totalDoves; i++) {
+        setTimeout(() => {
+          const dove = document.createElement('div');
+          dove.className = 'dove';
+          dove.innerHTML = '🕊️';
+          
+          dove.style.left = Math.random() * 98 + '%';
+          dove.style.animationDuration = (1.5 + Math.random() * 1.0) + 's';
+          
+          doveContainer.appendChild(dove);
+        }, i * 15);
+      }
+
+      setTimeout(() => {
+        whiteCover.style.opacity = '1';
+      }, 1500);
+
+      setTimeout(() => {
+        document.getElementById('pinPortal').style.display = 'none';
+        document.getElementById('mainContent').style.display = 'block';
+        document.getElementById('musicBtn').style.display = 'flex';
+        window.scrollTo(0, 0);
+      }, 2100);
+
+      setTimeout(() => {
+        doveContainer.style.transition = 'opacity 0.8s ease';
+        doveContainer.style.opacity = '0';
+        setTimeout(() => {
+          doveContainer.style.display = 'none';
+        }, 800);
+      }, 2500);
+    }
+
+    /* ====================================
+       3. MUSIC PLAYER CONTROLLER WITH EQUALIZER & TEXT STATUS
+       ==================================== */
+    const music = document.getElementById('bgMusic');
+    const musicBtnInner = document.getElementById('musicBtnInner');
+    const musicStatusText = document.getElementById('musicStatusText');
+
+    function toggleMusic() {
+      if (music.paused) {
+        music.play();
+        musicBtnInner.classList.add('playing');
+        musicStatusText.textContent = "Pause Music";
+      } else {
+        music.pause();
+        musicBtnInner.classList.remove('playing');
+        musicStatusText.textContent = "Play Music";
+      }
+    }
+
+    /* ====================================
+       4. GAME ENGINE - 4 STAGE
+       ==================================== */
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+
+    const LEVEL_WIDTH = 1500;
+    const VIEWPORT_WIDTH = 800;
+
+    let currentStage = 1;
+
+    const player = {
+      x: 50,
+      y: 200,
+      width: 30,
+      height: 40,
+      speed: 4.5,
+      velX: 0,
+      velY: 0,
+      jumping: false
+    };
+
+    let cameraX = 0;
+    const gravity = 0.5;
+    const keys = {};
+
+    const stageData = {
+      1: {
+        platforms: [
+          { x: 0, y: 290, width: 1500, height: 60 },
+          { x: 300, y: 220, width: 120, height: 15 },
+          { x: 600, y: 190, width: 120, height: 15 },
+          { x: 900, y: 220, width: 120, height: 15 }
+        ],
+        spikes: [{ x: 500, y: 275, width: 30, height: 15 }],
+        enemy: null,
+        flag: { x: 1400, y: 230, width: 25, height: 60 }
+      },
+      2: {
+        platforms: [
+          { x: 0, y: 290, width: 400, height: 60 },
+          { x: 480, y: 230, width: 110, height: 15 },
+          { x: 670, y: 180, width: 110, height: 15 },
+          { x: 860, y: 230, width: 110, height: 15 },
+          { x: 1050, y: 290, width: 450, height: 60 }
+        ],
+        spikes: [
+          { x: 220, y: 275, width: 35, height: 15 },
+          { x: 1180, y: 275, width: 40, height: 15 }
+        ],
+        enemy: null,
+        flag: { x: 1400, y: 230, width: 25, height: 60 }
+      },
+      3: {
+        platforms: [
+          { x: 0, y: 290, width: 300, height: 60 },
+          { x: 380, y: 220, width: 100, height: 15 },
+          { x: 550, y: 170, width: 100, height: 15 },
+          { x: 720, y: 220, width: 100, height: 15 },
+          { x: 890, y: 170, width: 100, height: 15 },
+          { x: 1060, y: 290, width: 440, height: 60 }
+        ],
+        spikes: [
+          { x: 180, y: 275, width: 40, height: 15 },
+          { x: 1180, y: 275, width: 50, height: 15 }
+        ],
+        enemy: null,
+        flag: { x: 1400, y: 230, width: 25, height: 60 }
+      },
+      4: {
+        platforms: [
+          { x: 0, y: 290, width: 250, height: 60 },
+          { x: 330, y: 220, width: 90, height: 15 },
+          { x: 490, y: 170, width: 90, height: 15 },
+          { x: 650, y: 220, width: 90, height: 15 },
+          { x: 810, y: 170, width: 90, height: 15 },
+          { x: 970, y: 290, width: 530, height: 60 }
+        ],
+        spikes: [
+          { x: 140, y: 275, width: 40, height: 15 },
+          { x: 1050, y: 275, width: 50, height: 15 }
+        ],
+        enemy: { x: 1180, y: 250, width: 35, height: 40 },
+        flag: { x: 1400, y: 230, width: 25, height: 60 }
+      }
+    };
+
+    let currentDialogueIndex = 0;
+    let inDialogue = false;
+    let gameFinished = false;
+
+    const dialogues = [
+      { speaker: "Insecurity", text: "Berhenti! Kamu sudah melewati 3 level, tapi kenapa masih yakin bisa selesai?" },
+      { speaker: "Bocil", text: "Sebagai atlet Karate, aku belajar bahwa rasa takut itu wajar, tapi pantang menyerah adalah jiwaku!" },
+      { speaker: "Insecurity", text: "Tapi bagaimana kalau kamu gagal di tahap paling akhir ini?" },
+      { speaker: "Bocil", text: "Setiap latihan membawaku jadi lebih kuat. Nilaiku bukan dari piala, tapi dari usahaku yang tak pernah berhenti!" },
+      { speaker: "Insecurity", text: "Oos! Jiwa bertarungmu luar biasa. Kamu pantas menang. Lewatlah!" }
+    ];
+
+    window.addEventListener('keydown', e => keys[e.code] = true);
+    window.addEventListener('keyup', e => keys[e.code] = false);
+
+    function triggerDeath() {
+      const respawn = document.getElementById('respawnMsg');
+      respawn.style.display = 'block';
+      player.x = 50;
+      player.y = 200;
+      player.velX = 0;
+      player.velY = 0;
+      setTimeout(() => { respawn.style.display = 'none'; }, 1000);
+    }
+
+    function updateGame() {
+      if (!inDialogue && !gameFinished && document.getElementById('mainContent').style.display === 'block') {
+        if (keys['ArrowRight'] || keys['KeyD']) { if (player.velX < player.speed) player.velX++; }
+        if (keys['ArrowLeft'] || keys['KeyA']) { if (player.velX > -player.speed) player.velX--; }
+        if ((keys['ArrowUp'] || keys['Space'] || keys['KeyW']) && !player.jumping) {
+          player.jumping = true;
+          player.velY = -10.5;
+        }
+
+        player.velX *= 0.8;
+        player.velY += gravity;
+        player.x += player.velX;
+        player.y += player.velY;
+
+        if (player.x < 0) player.x = 0;
+        if (player.y > 350) triggerDeath();
+
+        const activeStage = stageData[currentStage];
+        player.jumping = true;
+
+        for (let p of activeStage.platforms) {
+          if (
+            player.x < p.x + p.width &&
+            player.x + player.width > p.x &&
+            player.y + player.height >= p.y &&
+            player.y + player.height <= p.y + 15 &&
+            player.velY >= 0
+          ) {
+            player.y = p.y - player.height;
+            player.velY = 0;
+            player.jumping = false;
+          }
+        }
+
+        for (let s of activeStage.spikes) {
+          if (
+            player.x < s.x + s.width &&
+            player.x + player.width > s.x &&
+            player.y + player.height > s.y
+          ) {
+            triggerDeath();
+          }
+        }
+
+        cameraX = player.x - VIEWPORT_WIDTH / 3;
+        if (cameraX < 0) cameraX = 0;
+        if (cameraX > LEVEL_WIDTH - VIEWPORT_WIDTH) cameraX = LEVEL_WIDTH - VIEWPORT_WIDTH;
+
+        if (currentStage === 4 && activeStage.enemy && Math.abs(player.x - activeStage.enemy.x) < 50 && currentDialogueIndex === 0) {
+          startDialogue();
+        }
+
+        if (player.x >= activeStage.flag.x - 20) {
+          if (currentStage < 4) {
+            currentStage++;
+            player.x = 50;
+            player.y = 200;
+            document.getElementById('levelBadge').textContent = `Stage ${currentStage} / 4`;
+          } else if (currentStage === 4 && currentDialogueIndex >= dialogues.length) {
+            finishGame();
+          }
+        }
+      }
+
+      renderGame();
+      requestAnimationFrame(updateGame);
+    }
+
+    function renderGame() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.save();
+      ctx.translate(-cameraX, 0);
+
+      const activeStage = stageData[currentStage];
+
+      ctx.fillStyle = '#70a1ff';
+      ctx.fillRect(cameraX, 0, VIEWPORT_WIDTH, canvas.height);
+
+      ctx.fillStyle = '#ffa502';
+      ctx.beginPath();
+      ctx.arc(cameraX + 700, 60, 30, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = '#2ed573';
+      for (let p of activeStage.platforms) {
+        ctx.fillRect(p.x, p.y, p.width, p.height);
+      }
+
+      ctx.fillStyle = '#ff4757';
+      for (let s of activeStage.spikes) {
+        ctx.beginPath();
+        ctx.moveTo(s.x, s.y + s.height);
+        ctx.lineTo(s.x + s.width / 2, s.y);
+        ctx.lineTo(s.x + s.width, s.y + s.height);
+        ctx.fill();
+      }
+
+      if (activeStage.enemy && activeStage.enemy.x > 0) {
+        ctx.fillStyle = '#2f3542';
+        ctx.fillRect(activeStage.enemy.x, activeStage.enemy.y, activeStage.enemy.width, activeStage.enemy.height);
+        ctx.fillStyle = '#ff4757';
+        ctx.fillRect(activeStage.enemy.x + 5, activeStage.enemy.y + 10, 4, 4);
+        ctx.fillRect(activeStage.enemy.x + 20, activeStage.enemy.y + 10, 4, 4);
+      }
+
+      ctx.fillStyle = '#ffa502';
+      ctx.fillRect(activeStage.flag.x, activeStage.flag.y, activeStage.flag.width, activeStage.flag.height);
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 12px sans-serif';
+      ctx.fillText("🏆", activeStage.flag.x + 4, activeStage.flag.y + 35);
+
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(player.x, player.y, player.width, player.height);
+      ctx.fillStyle = '#111111';
+      ctx.fillRect(player.x, player.y + 20, player.width, 6);
+      ctx.fillStyle = '#ffeaa7';
+      ctx.fillRect(player.x + 5, player.y + 4, 20, 14);
+      ctx.fillStyle = '#ff4757';
+      ctx.fillRect(player.x + 3, player.y + 2, 8, 5);
+
+      ctx.restore();
+    }
+
+    /* ====================================
+       5. DIALOGUE SYSTEM
+       ==================================== */
+    const dialogueBox = document.getElementById('dialogueBox');
+    const speakerText = document.getElementById('dialogueSpeaker');
+    const dialogueText = document.getElementById('dialogueText');
+
+    function startDialogue() {
+      inDialogue = true;
+      dialogueBox.style.display = 'block';
+      showCurrentDialogue();
+    }
+
+    function showCurrentDialogue() {
+      if (currentDialogueIndex < dialogues.length) {
+        const d = dialogues[currentDialogueIndex];
+        speakerText.textContent = d.speaker;
+        dialogueText.textContent = d.text;
+      } else {
+        dialogueBox.style.display = 'none';
+        inDialogue = false;
+        stageData[4].enemy.x = -100;
+      }
+    }
+
+    function nextDialogue() {
+      currentDialogueIndex++;
+      if (currentDialogueIndex >= dialogues.length) {
+        dialogueBox.style.display = 'none';
+        inDialogue = false;
+        stageData[4].enemy.x = -100;
+      } else {
+        showCurrentDialogue();
+      }
+    }
+
+    /* ====================================
+       6. BALLOONS GENERATOR & FINISH GAME WITH MORPH ANIMATION
+       ==================================== */
+    function createBalloons() {
+      const container = document.getElementById('balloonContainer');
+      container.innerHTML = '';
+      const colors = ['#ff4757', '#ffa502', '#70a1ff', '#2ed573', '#e84393', '#ff6b81'];
+      
+      for (let i = 0; i < 35; i++) {
+        let balloon = document.createElement('div');
+        balloon.className = 'balloon';
+        balloon.style.left = Math.random() * 95 + '%';
+        balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        balloon.style.animationDelay = (Math.random() * 6) + 's';
+        balloon.style.animationDuration = (5 + Math.random() * 4) + 's';
+        container.appendChild(balloon);
+      }
+    }
+
+    function finishGame() {
+      gameFinished = true;
+      createBalloons();
+      
+      const morphDivider = document.getElementById('morphDivider');
+      const endingSection = document.getElementById('ending');
+      
+      // Tampilkan pemisah gelombang dan section ending
+      morphDivider.style.display = 'block';
+      endingSection.style.display = 'flex';
+
+      // Scroll halus ke bawah lalu aktifkan efek morph portal
+      endingSection.scrollIntoView({ behavior: 'smooth' });
+
+      setTimeout(() => {
+        endingSection.classList.add('morphed');
+      }, 300);
+    }
+
+    updateGame();
+  </script>
+</body>
+</html>
