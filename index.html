@@ -2,11 +2,11 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Portal Rahasia Sang XVII ❤️</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Libertinus+Math&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libertinus+Math&display=swap" rel="stylesheet">
 
   <style>
     /* ====================================
@@ -16,11 +16,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      .libertinus-math-regular {
-  font-family: "Libertinus Math", system-ui;
-  font-weight: 400;
-  font-style: normal;
-}
+      -webkit-tap-highlight-color: transparent; /* Hilangkan efek highlight tap di HP */
     }
 
     body {
@@ -28,9 +24,10 @@
       color: #4a4a4a;
       overflow-x: hidden;
       scroll-behavior: smooth;
+      font-family: system-ui, -apple-system, sans-serif;
     }
 
-    /* Floating Music Equalizer Container (Theme: Red Gradient) */
+    /* Floating Music Equalizer Container */
     .music-container {
       position: fixed;
       top: 20px;
@@ -62,9 +59,7 @@
       box-shadow: 0 3px 10px rgba(255, 71, 87, 0.3);
     }
 
-    .music-btn:hover {
-      transform: scale(1.08);
-    }
+    .music-btn:hover { transform: scale(1.08); }
 
     .music-text {
       font-size: 0.85rem;
@@ -74,7 +69,6 @@
       letter-spacing: 0.5px;
     }
 
-    /* Equalizer Bars Inside Button */
     .eq-bar {
       width: 3px;
       height: 14px;
@@ -83,7 +77,6 @@
       transition: height 0.2s ease;
     }
 
-    /* Equalizer Playing Animation */
     .music-btn.playing .bar-1 { animation: equalize 0.8s infinite ease-in-out alternate; }
     .music-btn.playing .bar-2 { animation: equalize 0.6s infinite ease-in-out alternate 0.2s; }
     .music-btn.playing .bar-3 { animation: equalize 0.9s infinite ease-in-out alternate 0.1s; }
@@ -101,10 +94,10 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background-image: url(portal\ web.png); /* ganti dengan nama/URL gambar kamu */
-  background-size: cover;       /* Agar gambar memenuhi seluruh layar */
-  background-position: center;  /* Posisi gambar di tengah */
-  background-repeat: no-repeat; /* Gambar tidak mengulang */
+      background-image: url(portal\ web.png);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       color: white;
       display: flex;
       flex-direction: column;
@@ -183,9 +176,7 @@
       transform: scale(0.95);
     }
 
-    /* ====================================
-       2. ANIMASI MERPATI PUTIH FULL SCREEN
-       ==================================== */
+    /* ANIMASI MERPATI PUTIH FULL SCREEN */
     #doveTransition {
       position: fixed;
       top: 0;
@@ -221,22 +212,13 @@
     }
 
     @keyframes flyUpAndScale {
-      0% {
-        transform: translateY(0) scale(0.5) rotate(0deg);
-        opacity: 0;
-      }
+      0% { transform: translateY(0) scale(0.5) rotate(0deg); opacity: 0; }
       15% { opacity: 1; }
       85% { opacity: 1; }
-      100% {
-        transform: translateY(-120vh) scale(4) rotate(-15deg);
-        opacity: 1;
-      }
+      100% { transform: translateY(-120vh) scale(4) rotate(-15deg); opacity: 1; }
     }
 
-    /* Container Utama Website */
-    #mainContent {
-      display: none;
-    }
+    #mainContent { display: none; }
 
     section {
       min-height: 100vh;
@@ -249,25 +231,17 @@
       position: relative;
     }
 
-    h1, h2 {
-      color: #ff4757;
-      margin-bottom: 15px;
-    }
+    h1, h2 { color: #ff4757; margin-bottom: 15px; }
 
     /* HERO SECTION */
     .hero {
-      
-  /* Memanggil gambar background baru */
-  background-image: url(Gemini_Generated_Image_vtc2lovtc2lovtc2.png);
-  background-size: cover;       /* Memastikan gambar selalu memenuhi area hero */
-  background-position: center;  /* Menjaga fokus gambar tetap di tengah */
-  background-repeat: no-repeat;
-  /* Efek kartu transparan putih agar teks semakin menonjol */
-  background-color: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(4px);
-}
-      
-    
+      background-image: url(Gemini_Generated_Image_vtc2lovtc2lovtc2.png);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(4px);
+    }
 
     .hero h1 { font-size: 2.8rem; }
 
@@ -283,36 +257,33 @@
       40% { transform: translateY(-10px); }
       60% { transform: translateY(-5deg); }
     }
-/* PHOTO GALLERY SECTION */
-#gallery {
-  width: 100vw;                 /* Memaksa background selebar 100% layar HP/Laptop */
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  
-  /* GAMBAR BACKGROUND PERMEN KAMU */
-  background-image: url(Gemini_Generated_Image_vtc2lovtc2lovtc2.png); /* Ganti dengan nama file gambar permen kamu */
-  background-size: cover;                  /* Gambar otomatis memenuhi SELURUH area latar */
-  background-position: center center;      /* Posisikan di tengah-tengah */
-  background-repeat: no-repeat;            /* Mencegah gambar terulang */
-  
-  padding: 80px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
-/* Memastikan wadah foto tetap rapi di tengah background */
-.gallery-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  width: 100%;
-  max-width: 1100px;
-  margin-top: 30px;
-}
+    /* PHOTO GALLERY SECTION */
+    #gallery {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      background-image: url(Galeri.png);
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      padding: 80px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .gallery-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      width: 100%;
+      max-width: 1100px;
+      margin-top: 30px;
+    }
 
     .photo-card {
       background: white;
@@ -322,9 +293,7 @@
       transition: transform 0.3s ease;
     }
 
-    .photo-card:hover {
-      transform: translateY(-8px) rotate(1deg);
-    }
+    .photo-card:hover { transform: translateY(-8px) rotate(1deg); }
 
     .photo-card img {
       width: 100%;
@@ -342,12 +311,12 @@
     /* GAME SECTION */
     .game-section {
       background-image: url(mario.jpg);
-      background-size: cover;                  /* Gambar otomatis memenuhi SELURUH area latar */
-  background-position: center center;      /* Posisikan di tengah-tengah */
-  background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
       color: white;
       width: 100%;
-      padding-bottom: 80px; /* Space tambahan di bagian bawah game */
+      padding-bottom: 80px;
     }
 
     .game-section h2 { color: #ff6b81; }
@@ -360,11 +329,14 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
       position: relative;
       margin-top: 20px;
+      touch-action: none; /* Mencegah layar ter-scroll saat main game di HP */
     }
 
     #gameCanvas {
       background: #70a1ff;
       display: block;
+      width: 100%;
+      height: auto;
     }
 
     .level-badge {
@@ -410,13 +382,10 @@
       color: white;
       text-align: left;
       display: none;
-      z-index: 10;
+      z-index: 20;
     }
 
-    .dialogue-box h4 {
-      color: #ffa502;
-      margin-bottom: 5px;
-    }
+    .dialogue-box h4 { color: #ffa502; margin-bottom: 5px; }
 
     .dialogue-btn {
       background: #ff4757;
@@ -431,8 +400,55 @@
     }
 
     /* ====================================
-       TRANSISI GELOMBANG MORPH / DIVIDER
+       KONTROL GAME UNTUK LAYAR TOUCH / HP
        ==================================== */
+    .touch-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      max-width: 800px;
+      margin-top: 15px;
+      padding: 0 10px;
+      user-select: none;
+    }
+
+    .dpad-container {
+      display: flex;
+      gap: 15px;
+    }
+
+    .touch-btn {
+      width: 65px;
+      height: 65px;
+      background: rgba(255, 255, 255, 0.25);
+      border: 2px solid rgba(255, 255, 255, 0.6);
+      border-radius: 50%;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      cursor: pointer;
+    }
+
+    .touch-btn:active {
+      background: #ff4757;
+      transform: scale(0.92);
+    }
+
+    .jump-btn {
+      width: 75px;
+      height: 75px;
+      background: rgba(255, 71, 87, 0.8);
+      border-color: #ffffff;
+      font-size: 1.1rem;
+    }
+
+    /* MORPHING WAVE DIVIDER */
     .morph-divider {
       display: none;
       width: 100%;
@@ -441,35 +457,25 @@
       line-height: 0;
     }
 
-    .morph-divider svg {
-      width: 100%;
-      height: 100px;
-    }
+    .morph-divider svg { width: 100%; height: 100px; }
 
-    /* ====================================
-       3. ENDING SECTION & BALLOON ANIMATION
-       ==================================== */
+    /* ENDING SECTION */
     .ending-section {
       display: none;
       background-image: url(estetic\ pink.jpg);
-      background-size: cover;                  /* Gambar otomatis memenuhi SELURUH area latar */
-  background-position: center center;      /* Posisikan di tengah-tengah */
-  background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
       overflow: hidden;
       position: relative;
-      padding: 120px 20px 80px 20px; /* Space atas lebih tinggi agar lega */
+      padding: 120px 20px 80px 20px;
       margin-top: 0;
       clip-path: circle(0% at 50% 0%);
       transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1);
-      
     }
 
-    /* Kelas animasi morph yang dipanggil JS */
-    .ending-section.morphed {
-      clip-path: circle(150% at 50% 0%);
-    }
+    .ending-section.morphed { clip-path: circle(150% at 50% 0%); }
 
-    /* Continuous Balloon Animation Container */
     #balloonContainer {
       position: absolute;
       top: 0;
@@ -502,14 +508,8 @@
     }
 
     @keyframes floatUp {
-      0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 0.85;
-      }
-      100% {
-        transform: translateY(-120vh) rotate(20deg);
-        opacity: 0;
-      }
+      0% { transform: translateY(0) rotate(0deg); opacity: 0.85; }
+      100% { transform: translateY(-120vh) rotate(20deg); opacity: 0; }
     }
 
     .ending-content {
@@ -544,7 +544,6 @@
       z-index: 5;
     }
 
-    /* BULETAN FOTO RANDOM DI SEKELILING KARTU */
     .circle-photo-wrapper {
       position: absolute;
       top: 0;
@@ -568,10 +567,7 @@
       background: #ffffff;
     }
 
-    .circle-photo:hover {
-      transform: scale(1.25) rotate(5deg);
-      z-index: 10;
-    }
+    .circle-photo:hover { transform: scale(1.25) rotate(5deg); z-index: 10; }
 
     .cp-1  { top: -45px; left: -25px; width: 85px; height: 85px; }
     .cp-4  { top: -45px; right: -25px; }
@@ -581,14 +577,7 @@
     .cp-8  { top: 50%; right: -75px; width: 85px; height: 85px; }
     .cp-9  { top: 78%; left: -60px; }
     .cp-10 { top: 78%; right: -60px; width: 80px; height: 80px; }
-    .cp-11 { bottom: -45px; left: -20px; width: 85px; height: 85px; }
-    .cp-12 { bottom: -55px; left: 30%; }
-    .cp-13 { bottom: -55px; right: 30%; width: 90px; height: 90px; }
-    .cp-14 { bottom: -45px; right: -20px; }
 
-    /* ====================================
-       4. CUSTOM FOOTER (THEME: RED ACCENT)
-       ==================================== */
     footer {
       text-align: center;
       padding: 20px;
@@ -598,15 +587,7 @@
       border-top: 1px solid #ffe6eb;
     }
 
-    footer .brand-highlight {
-      color: #ff4757;
-      font-weight: bold;
-    }
-
-    footer .year-highlight {
-      color: #ff4757;
-      font-weight: bold;
-    }
+    footer .brand-highlight, footer .year-highlight { color: #ff4757; font-weight: bold; }
 
     @media (max-width: 768px) {
       .circle-photo { width: 55px !important; height: 55px !important; }
@@ -618,8 +599,6 @@
       .cp-8  { right: -30px; }
       .cp-9  { left: -25px; }
       .cp-10 { right: -25px; }
-      .cp-11 { bottom: -30px; left: -10px; }
-      .cp-14 { bottom: -30px; right: -10px; }
     }
   </style>
 </head>
@@ -630,7 +609,7 @@
     <source src="Sempurna ( TikTok Full Version ) [7SSISCNlDoU].mp3" type="audio/mp3">
   </audio>
 
-  <!-- Equalizer Music Button + Teks Indikator -->
+  <!-- Equalizer Music Button -->
   <div class="music-container" id="musicBtn">
     <button class="music-btn" id="musicBtnInner" onclick="toggleMusic()" title="Play / Pause Music">
       <div class="eq-bar bar-1"></div>
@@ -641,14 +620,14 @@
     <span class="music-text" id="musicStatusText">Play Music</span>
   </div>
 
-  <!-- PORTAL OVERLAY 1: WELCOME SCREEN -->
+  <!-- PORTAL OVERLAY 1 -->
   <div class="portal-overlay" id="welcomePortal">
     <h1 style="font-size: 2.2rem; color: #030303; margin-bottom: 10px;">- Welcome To -</h1>
     <p style="font-size: 1.2rem; color: #ff0026; font-weight: bold;">PORTAL RAHASIA SANG XVII ✨</p>
     <button class="portal-btn" onclick="goToPinScreen()">Masuk ▶</button>
   </div>
 
-  <!-- PORTAL OVERLAY 2: PIN LOCK SCREEN -->
+  <!-- PORTAL OVERLAY 2 -->
   <div class="portal-overlay" id="pinPortal" style="display: none;">
     <h2 style="color: #fa8a00; font-size: 1.5rem;">Masukkan Kode Akses Rahasia 🔐</h2>
     <div class="pin-display" id="pinDisplay">----</div>
@@ -670,22 +649,20 @@
     </div>
   </div>
 
-  <!-- CONTAINER MERPATI PUTIH FULL SCREEN -->
+  <!-- MERPATI TRANSITION -->
   <div id="doveTransition">
     <div class="white-screen-cover" id="whiteCover"></div>
   </div>
 
-  <!-- MAIN WEBSITE CONTENT -->
+  <!-- MAIN CONTENT -->
   <div id="mainContent">
 
-    <!-- SECTION 1: HERO -->
     <section class="hero" id="home">
       <h1>❤️HAPPY BIRTHDAYY, SAYANGGGG!!!! ❤️</h1>
       <p>Selamat ulang tahun buat The Only One atlet Karate terfavorit dan Paling papa sayangi!!</p>
       <p class="scroll-down-hint">↓ Scroll ke bawah duluu yukk buat liat hadiah kecil ini, xixixi ↓</p>
     </section>
 
-    <!-- SECTION 2: GALLERY -->
     <section id="gallery">
       <h2>Galeri Senyuman Bocil sekaligus Penyemangat PAPAA📸</h2>
       <p>Di balik ketangguhan bocill di arena, senyuman bocill pasti akan selalu jadi hal paling hangat dan mahal buat papaa xixixi.</p>
@@ -742,10 +719,10 @@
       </div>
     </section>
 
-    <!-- SECTION 3: MINI GAME -->
+    <!-- GAME SECTION WITH TOUCH CONTROLS -->
     <section class="game-section" id="game">
       <h2>Mini Quest: Karate Journey 🎮</h2>
-      <p>Gunakan panah <b>Kiri & Kanan</b> (A/D) untuk jalan, dan <b>Atas/Space</b> (W) untuk lompat!</p>
+      <p><b>Gunakan tombol W/S/A/D di keyboard</b> atau <b>tombol Panah di layar HP</b> untuk bergerak & lompat!</p>
       <p style="font-size:0.85rem; color:#ff7675; margin-top:5px;">Selesaikan 4 Level tantangan untuk membuka pesan rahasia di akhir!</p>
       
       <div class="game-container-viewport">
@@ -760,28 +737,32 @@
           <button class="dialogue-btn" id="dialogueBtn" onclick="nextDialogue()">Lanjut ▶</button>
         </div>
       </div>
+
+      <!-- ON-SCREEN TOUCH BUTTONS UNTUK HP -->
+      <div class="touch-controls">
+        <div class="dpad-container">
+          <button class="touch-btn" id="btnLeft">◄</button>
+          <button class="touch-btn" id="btnRight">►</button>
+        </div>
+        <button class="touch-btn jump-btn" id="btnJump">LOMPAT</button>
+      </div>
     </section>
 
-    <!-- MORPHING WAVE DIVIDER ANTARA GAME & ENDING PAGE -->
     <div class="morph-divider" id="morphDivider">
       <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
-        <path fill="#f8c8dc, #f48fb1" fill-opacity="1" d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,144C672,139,768,181,864,197.3C960,213,1056,203,1152,176C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        <path fill="#f8c8dc" fill-opacity="1" d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,144C672,139,768,181,864,197.3C960,213,1056,203,1152,176C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
       </svg>
     </div>
 
-    <!-- SECTION 4: ENDING PAGE -->
+    <!-- ENDING SECTION -->
     <section class="ending-section" id="ending">
-      <!-- CONTAINER BALON MELAYANG LONTAR KELUAR -->
       <div id="balloonContainer"></div>
 
       <div class="ending-content">
         <div class="karate-belt">BLACK BELT OF MY HEART 🥋❤️</div>
         <h2>YEAYYY!! Selamat Sayangg! Bocill Menang, nyammm! 🏆</h2>
 
-        <!-- CONTAINER KARTU UCAPAN & FOTO CIRCLE -->
         <div style="position: relative; width: 100%;">
-          
-          <!-- FOTO BULETAN RANDOM DI SEKELILING KARTU -->
           <div class="circle-photo-wrapper">
             <img src="BUNGA PT 2.jpg" class="circle-photo cp-1" alt="Foto 1">
             <img src="IMUT 7.jpeg" class="circle-photo cp-4" alt="Foto 4">
@@ -793,11 +774,10 @@
             <img src="IMUT 5.jpeg" class="circle-photo cp-10" alt="Foto 10">
           </div>
 
-          <!-- KARTU UCAPAN UTAMA -->
           <div class="letter-box">
             <p>SAYANGGGG, SELAMAT ULANG TAHUN YANG KE 19 YAHHH, CIEE OFFICIAL SWEET NINETEEN xixixi</p>
             <br>
-            <p>Sebagai seorang atlet dan juga pasangan yang baik, bocil mungkin terbiasa membagi waktu  serta mengalami jatuh bangun meski tanpa papa ketahui sekalipun. Tapi papa mau ngingetin bocil papa yang gemesh ini satu hal penting: <b>jangan pernah merasa minder atau meragukan diri bocil ya sayangg</b>, baik di dalam maupun di luar.</p>
+            <p>Sebagai seorang atlet dan juga pasangan yang baik, bocil mungkin terbiasa membagi waktu serta mengalami jatuh bangun meski tanpa papa ketahui sekalipun. Tapi papa mau ngingetin bocil papa yang gemesh ini satu hal penting: <b>jangan pernah merasa minder atau meragukan diri bocil ya sayangg</b>, baik di dalam maupun di luar.</p>
             <br>
             <p>Bocil adalah sosok yang menginspirasi papa setiap hari untuk tetap kuat, disiplin, tangguh, dan punya jiwa penyabar yang luar biasa. Ketika bocil merasa lelah atau ragu, ingat yaa kalau ada papaa yang selalu jadi suporter nomor satu bocill yang akan selalu mendukung, membantu, dan mendengarkan bocil meski papa sendieri belum sempurna:> </p>
             <br>
@@ -805,21 +785,17 @@
             <br>
             <p style="text-align: right; font-weight: bold;">Dengan segenap cinta dan kasih sayang,<br>-Papa Miaww-</p>
           </div>
-
         </div>
       </div>
     </section>
   </div>
 
-  <!-- FOOTER REDESIGNED -->
   <footer>
-    &copy; <span class="brand-highlight">2026 PPA-07</span> <span class="year-highlight">2026</span>. All rights reserved.
+    &copy; <span class="brand-highlight">PPA-07</span> <span class="year-highlight">2026</span>. All rights reserved.
   </footer>
 
   <script>
-    /* ====================================
-       1. PORTAL & PIN LOCK SYSTEM
-       ==================================== */
+    /* 1. PORTAL & PIN SYSTEM */
     let inputPin = "";
     const targetPin = "1708";
 
@@ -830,11 +806,7 @@
 
     function updatePinDisplay() {
       const display = document.getElementById('pinDisplay');
-      if (inputPin.length === 0) {
-        display.textContent = "----";
-      } else {
-        display.textContent = "•".repeat(inputPin.length);
-      }
+      display.textContent = inputPin.length === 0 ? "----" : "•".repeat(inputPin.length);
     }
 
     function pressKey(num) {
@@ -842,9 +814,7 @@
         inputPin += num;
         updatePinDisplay();
       }
-      if (inputPin.length === 4) {
-        submitPin();
-      }
+      if (inputPin.length === 4) submitPin();
     }
 
     function clearPin() {
@@ -863,31 +833,24 @@
       }
     }
 
-    /* ====================================
-       2. TRANSISI MERPATI PUTIH
-       ==================================== */
+    /* 2. DOVE TRANSITION */
     function triggerDoveAnimation() {
       const doveContainer = document.getElementById('doveTransition');
       const whiteCover = document.getElementById('whiteCover');
       doveContainer.style.display = 'block';
 
-      const totalDoves = 120;
-      for (let i = 0; i < totalDoves; i++) {
+      for (let i = 0; i < 120; i++) {
         setTimeout(() => {
           const dove = document.createElement('div');
           dove.className = 'dove';
           dove.innerHTML = '🕊️';
-          
           dove.style.left = Math.random() * 98 + '%';
           dove.style.animationDuration = (1.5 + Math.random() * 1.0) + 's';
-          
           doveContainer.appendChild(dove);
         }, i * 15);
       }
 
-      setTimeout(() => {
-        whiteCover.style.opacity = '1';
-      }, 1500);
+      setTimeout(() => { whiteCover.style.opacity = '1'; }, 1500);
 
       setTimeout(() => {
         document.getElementById('pinPortal').style.display = 'none';
@@ -899,15 +862,11 @@
       setTimeout(() => {
         doveContainer.style.transition = 'opacity 0.8s ease';
         doveContainer.style.opacity = '0';
-        setTimeout(() => {
-          doveContainer.style.display = 'none';
-        }, 800);
+        setTimeout(() => { doveContainer.style.display = 'none'; }, 800);
       }, 2500);
     }
 
-    /* ====================================
-       3. MUSIC PLAYER CONTROLLER WITH EQUALIZER & TEXT STATUS
-       ==================================== */
+    /* 3. MUSIC PLAYER */
     const music = document.getElementById('bgMusic');
     const musicBtnInner = document.getElementById('musicBtnInner');
     const musicStatusText = document.getElementById('musicStatusText');
@@ -924,9 +883,7 @@
       }
     }
 
-    /* ====================================
-       4. GAME ENGINE - 4 STAGE
-       ==================================== */
+    /* 4. GAME ENGINE & TOUCH CONTROLS */
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
 
@@ -1023,8 +980,25 @@
       { speaker: "Insecurity", text: "Oos! Jiwa bertarungmu luar biasa. Kamu pantas menang. Lewatlah!" }
     ];
 
+    // Keyboard Event Listener (Laptop)
     window.addEventListener('keydown', e => keys[e.code] = true);
     window.addEventListener('keyup', e => keys[e.code] = false);
+
+    // Touch Event Listener (HP)
+    const btnLeft = document.getElementById('btnLeft');
+    const btnRight = document.getElementById('btnRight');
+    const btnJump = document.getElementById('btnJump');
+
+    const setupTouchBtn = (btn, keyName) => {
+      btn.addEventListener('touchstart', (e) => { e.preventDefault(); keys[keyName] = true; });
+      btn.addEventListener('touchend', (e) => { e.preventDefault(); keys[keyName] = false; });
+      btn.addEventListener('mousedown', () => keys[keyName] = true);
+      btn.addEventListener('mouseup', () => keys[keyName] = false);
+    };
+
+    setupTouchBtn(btnLeft, 'ArrowLeft');
+    setupTouchBtn(btnRight, 'ArrowRight');
+    setupTouchBtn(btnJump, 'Space');
 
     function triggerDeath() {
       const respawn = document.getElementById('respawnMsg');
@@ -1159,9 +1133,7 @@
       ctx.restore();
     }
 
-    /* ====================================
-       5. DIALOGUE SYSTEM
-       ==================================== */
+    /* 5. DIALOGUE SYSTEM */
     const dialogueBox = document.getElementById('dialogueBox');
     const speakerText = document.getElementById('dialogueSpeaker');
     const dialogueText = document.getElementById('dialogueText');
@@ -1195,9 +1167,7 @@
       }
     }
 
-    /* ====================================
-       6. BALLOONS GENERATOR & FINISH GAME WITH MORPH ANIMATION
-       ==================================== */
+    /* 6. FINISH GAME & BALLOONS */
     function createBalloons() {
       const container = document.getElementById('balloonContainer');
       container.innerHTML = '';
@@ -1221,16 +1191,11 @@
       const morphDivider = document.getElementById('morphDivider');
       const endingSection = document.getElementById('ending');
       
-      // Tampilkan pemisah gelombang dan section ending
       morphDivider.style.display = 'block';
       endingSection.style.display = 'flex';
-
-      // Scroll halus ke bawah lalu aktifkan efek morph portal
       endingSection.scrollIntoView({ behavior: 'smooth' });
 
-      setTimeout(() => {
-        endingSection.classList.add('morphed');
-      }, 300);
+      setTimeout(() => { endingSection.classList.add('morphed'); }, 300);
     }
 
     updateGame();
